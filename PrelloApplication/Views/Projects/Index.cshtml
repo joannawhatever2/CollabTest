@@ -1,0 +1,122 @@
+﻿@model IEnumerable<PrelloApplication.Models.Project>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h1>Projects</h1>
+<p>Soon, you will mange your projects... very soon...</p>
+<div class="container">
+    <h4 class="custom_text">Projects list</h4>
+    <a asp-action="Delete" class="btn btn-danger btn-sm">Delete</a>
+    <a asp-action="Create" class="btn btn-Primary btn-sm">Create</a>
+    <a asp-action="Edit" class="btn btn-Secondary btn-sm">Edit</a>
+    <div>
+        @if (Model.Count()>0)
+        {
+            <table class="table table-striped border">
+                <tr>
+                    <th>Project Name</th>
+                    <th>Due Daet</th>
+                    <th>Descriptions</th>
+                    <th>Actions</th>
+                <tr>
+
+
+            </table>
+        } @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => item.ProjectName)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.DateDue)
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm text-white">Edit</a>
+                </td>
+            </tr>
+        }
+        else
+        {
+            <p>Model Count is </p>
+            <h2> @Model.Count() </h2>
+        }
+    </div>
+</div>
+<br />
+
+@*<form asp-controller="Projects" asp-action="Search" method="get" class="searchForm">
+        <input type="search" name="SearchString" class="form-control rounded searchField" placeholder="search by name">
+        <button type="submit" class="btn btn-info">Search</button>
+    </form>*@
+
+@*@foreach (var item in Model)
+                {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.DueDate)
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm text-white">Edit</a>
+                </td>
+            </tr>
+                }
+   <div>
+        @if (Model.Count() > 0)
+        {
+            <table class="table table-striped border">
+                <tr class="table-secondary">
+                    <th>
+
+                    </th>
+                    <th>
+
+                    </th>
+                    <th>
+
+                    </th>
+                    <th>
+                        <span>Action</span>
+                    </th>
+                </tr>
+@foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm text-white">Edit</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <p>No projects available.</p>
+        }
+    </div>
+
+
+</div>*@
